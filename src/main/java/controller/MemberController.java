@@ -24,10 +24,9 @@ public class MemberController extends HttpServlet {
                 String name = req.getParameter("name");
 
                 Member member = new Member(id, password, name);
-
-
-
-
+            }
+            if (uri.equals("login.member")) {
+                resp.sendRedirect("/member/login.jsp");
             }
 
         } catch (Exception e) {
