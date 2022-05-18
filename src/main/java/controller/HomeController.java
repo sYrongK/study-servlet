@@ -9,6 +9,7 @@ import java.io.IOException;
 
 @WebServlet(name = "*.main")
 public class HomeController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doProcess(req, resp);

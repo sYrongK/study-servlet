@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @WebServlet(name = "*.user")
 public class UserController extends HttpServlet {
@@ -18,15 +19,16 @@ public class UserController extends HttpServlet {
         String uri = req.getRequestURI();
 
         try {
-            if (uri.equals("join.user")) {
+            if (uri.equals("/join.user")) {
                 String id = req.getParameter("id");
                 String password = req.getParameter("password");
                 String name = req.getParameter("name");
 
                 Member member = new Member(id, password, name);
             }
-            if (uri.equals("loginForm.user")) {
-                resp.sendRedirect("/user/login.jsp");
+            if (uri.equals("/loginForm.user")) {
+                resp.sendRedirect("/user/naverlogin.jsp");
+                System.out.println("dsdsd");
             }
 
         } catch (Exception e) {

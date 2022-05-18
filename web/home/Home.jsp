@@ -10,7 +10,7 @@
 <body>
 <c:if test = '${empty sessionScope.id }'>
     <script>
-        location.href = "loginForm.user";
+        location.href = "/loginForm.user";
     </script>
 </c:if>
 
