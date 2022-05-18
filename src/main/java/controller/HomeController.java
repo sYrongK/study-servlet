@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "*.main")
-public class MainController extends HttpServlet {
-
+public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doProcess(req, resp);
@@ -20,16 +19,16 @@ public class MainController extends HttpServlet {
         doProcess(req, resp);
     }
 
-    private void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("HomeServlet");
         try {
-            resp.sendRedirect("/home/Home.jsp");
+            response.sendRedirect("/home/Home.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
-            resp.sendError(500, "Servlet Error :: MainServlet");
-            resp.setStatus(500);
-            resp.sendRedirect("/common/Error.jsp");
+            response.sendError(500, "Servlet Error :: MainServlet");
+            response.setStatus(500);
+            response.sendRedirect("/common/Error.jsp");
         }
     }
 }

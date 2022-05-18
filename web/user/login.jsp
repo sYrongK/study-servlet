@@ -83,13 +83,13 @@
     <script>
         $(function(){	//회원가입 버튼 클릭시 join.net 주소로 이동하도록 설정
             $(".join").click(function(){
-                location.href = "joinForm.net";
+                location.href = "joinForm.user";
             });
         })
     </script>
 </head>
 <body>
-<form action = "loginPro.net" method = "post">
+<%--<form action = "login.user" method = "post">
     <h1>로그인</h1>
     <hr>
     <b>아이디</b>
@@ -100,6 +100,7 @@
         <button type = "submit" class= "submitbtn">Submit</button>
         <button type = "button" class= "join">회원가입</button>
     </div>
-</form>
+</form>--%>
+<button></button>
 </body>
 </html>

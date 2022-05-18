@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "*.member")
-public class MemberController extends HttpServlet {
+@WebServlet(name = "*.user")
+public class UserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,15 +18,15 @@ public class MemberController extends HttpServlet {
         String uri = req.getRequestURI();
 
         try {
-            if (uri.equals("join.member")) {
+            if (uri.equals("join.user")) {
                 String id = req.getParameter("id");
                 String password = req.getParameter("password");
                 String name = req.getParameter("name");
 
                 Member member = new Member(id, password, name);
             }
-            if (uri.equals("login.member")) {
-                resp.sendRedirect("/member/login.jsp");
+            if (uri.equals("loginForm.user")) {
+                resp.sendRedirect("/user/login.jsp");
             }
 
         } catch (Exception e) {
