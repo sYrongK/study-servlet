@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -62,10 +63,21 @@ public class SSOController extends HttpServlet {
 
                 URL url = new URL(api_url);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                HttpSession session = request.getSession();
+                session.setAttribute("state", state);
+
                 connection.connect();
             }
             if (uri.equals("/callback.sso")) {
-                System.out.println("ssssss");
+                /*
+                * 네이버 인증 요청을 처리하는 서버에서 보내는 response data
+                * code : 네이버 애플리케이션 인증에 성공하면 반환받는 인증 코드. token 발급을 위해 필요함
+                * state : 네이버 인증 요청 보낼 떄 생성해서 보냈던 요청 위조 공격 방지용 상태값
+                * error : 네이버 애플리케이션 인증 실패하면 반환받는 에러 코드 -> 에러 코드에 따라 다른 처리 할 수 있음
+                * error_description : 
+                * */
+                String code = request.getParameter("code");
+                String state = request.getParameter("state");
             }
 
         } catch (Exception e) {
